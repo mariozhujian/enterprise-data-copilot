@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: enterprise-data-copilot
+
+  ai:
+    model:
+      chat: deepseek
+    deepseek:
+      api-key: ${DEEPSEEK_API_KEY}
+
+#    openai:
+#      timeout: 30s
+#      max-retries: 1
+#      chat:
+#        model: deepseek-flash
+
+logging:
+  level:
+    root: INFO
+    com.example.enterprisedatacopilot: DEBUG
