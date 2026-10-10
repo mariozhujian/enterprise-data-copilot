@@ -1,19 +1,16 @@
 from openai import AsyncOpenAI, max_retries
+from collections.abc import AsyncIterator
 
 from app.config import get_settings
-from app.schemas import ChatResponse
-from openai.resources import Chat
-from openai.types import Completion
 
 SYSTEM_PROMPT = """
-    你是一名企业级智能数据分析助手。
-    请使用简体中文回答问题。
+    你是企业级智能数据分析助手。
 
     规则：
-    1. 不能编造企业经营数据。
-    2. 数据不足时明确说明。
-    3. 回答尽量简洁、准确。
-    4. 当前阶段不能访问企业数据库。
+    1. 使用简体中文回答。
+    2. 不能编造企业经营数据。
+    3. 没有查询工具时，应说明无法取得真实数据。
+    4. 不要声称已经执行数据库查询。
 """
 
 class LLMService:
@@ -30,25 +27,36 @@ class LLMService:
             max_retries=1
         )
 
-    async def chat(self, message: str) -> ChatResponse:
+    def build_messages(self, message: str) -> list[dict]:
+        return [
+            {
+                "role": "system",
+                "content": SYSTEM_PROMPT,
+            },
+            {
+                "role": "user",
+                "content": message,
+            }
+        ]
 
-        completion = await self.client.chat.completions.create(
+    async def chat(self, message: str) -> str:
+
+        response = await self.client.chat.completions.create(
             model=self.model,
-            messages=[
-                {
-                    "role": "system",
-                    "content": SYSTEM_PROMPT,
-                },
-                {
-                    "role": "user",
-                    "content": message,
-                }
-            ]
+            messages=self.build_messages(message),
         )
 
-        answer = completion.choices[0].message.content
+        return response.choices[0].message.content or ""
 
-        return ChatResponse(
-            answer=answer or "",
+    # 流式输出：返回一个异步迭代器，允许逐段消费模型输出
+    async def stream(self, message: str) -> AsyncIterator[str]:
+        async with self.client.chat.completions.stream(
             model=self.model,
-        )
+            messages=self.build_messages(message),
+        ) as stream:
+            async for event in stream:
+                if event.type == "content.delta" and event.delta:
+                    yield event.delta
+
+    async def close(self):
+        await self.client.close()

@@ -19,7 +19,7 @@ class LLMGatewayError(Exception):
         self.status_code = status_code
 
 
-def covert_llm_error(exc: Exception) -> LLMGatewayError:
+def convert_llm_error(exc: Exception) -> LLMGatewayError:
     if isinstance(exc, APITimeoutError):
         return LLMGatewayError(
             "LLM_TIMEOUT",
