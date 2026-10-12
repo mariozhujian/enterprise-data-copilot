@@ -11,8 +11,8 @@ from app.api.chat import router
 from app.errors import (
     LLMGatewayError,
     gateway_error_handler,
-    validation_error_handler,
     unexpected_error_handler,
+    validation_error_handler,
 )
 from app.services.llm_service import LLMService
 

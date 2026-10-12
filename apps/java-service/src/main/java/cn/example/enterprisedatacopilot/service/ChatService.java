@@ -27,7 +27,7 @@ public class ChatService {
                 .call()
                 .content();
 
-        return new ChatResponse(answer);
+        return new ChatResponse(null, answer, null);
     }
 
     public AnalysisResult analyze(String message) {

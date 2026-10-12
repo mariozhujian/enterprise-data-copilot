@@ -2,27 +2,30 @@
 import pytest
 from httpx import ASGITransport, AsyncClient
 
-from app.main import app, get_llm_service
-from app.schemas import ChatResponse
+from app.main import app
 
 
 class FakeLLMService:
 
-    async def chat(self, message: str) -> ChatResponse:
-        return ChatResponse(
-            answer=f"模拟回复：{message}",
-            model="fake-model",
-        )
+    model = "fake-model"
+
+    async def chat(self, message: str) -> str:
+        return f"模拟回复：{message}"
+
+
+@pytest.fixture(autouse=True)
+def fake_service():
+    previous = getattr(app.state, "llm", None)
+    app.state.llm = FakeLLMService()
+    yield
+    if previous is None:
+        del app.state.llm
+    else:
+        app.state.llm = previous
 
 
 @pytest.mark.asyncio
-async def test_chat_success(monkeypatch):
-
-    monkeypatch.setattr(
-        "app.main.get_llm_service",
-        lambda: FakeLLMService(),
-    )
-
+async def test_chat_success():
     transport = ASGITransport(app=app)
 
     async with AsyncClient(
@@ -31,7 +34,7 @@ async def test_chat_success(monkeypatch):
     ) as client:
 
         response = await client.post(
-            "/api/chat",
+            "/chat",
             json={"message": "你好"},
         )
 
@@ -50,7 +53,7 @@ async def test_chat_empty_message():
     ) as client:
 
         response = await client.post(
-            "/api/chat",
+            "/chat",
             json={"message": ""},
         )
 

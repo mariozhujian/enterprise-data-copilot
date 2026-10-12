@@ -1,6 +1,7 @@
 package cn.example.enterprisedatacopilot.exception;
 
 
+import cn.example.enterprisedatacopilot.dto.ApiError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -39,6 +40,13 @@ public class GlobalExceptionHandler {
                         "message", "服务暂时不可用"
                 )
         );
+    }
+
+    @ExceptionHandler(value = AiUpstreamException.class)
+    public ResponseEntity<ApiError> handleUpstream(AiUpstreamException ex) {
+        return ResponseEntity.status(ex.getStatus()).body(
+                new ApiError(  "AI_UPSTREAM_ERROR",
+                        "AI服务暂时不可用"));
     }
 
 }

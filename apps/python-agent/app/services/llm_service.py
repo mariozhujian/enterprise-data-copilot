@@ -1,5 +1,6 @@
-from openai import AsyncOpenAI, max_retries
 from collections.abc import AsyncIterator
+
+from openai import AsyncOpenAI
 
 from app.config import get_settings
 

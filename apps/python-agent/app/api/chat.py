@@ -7,9 +7,9 @@ from uuid import uuid4
 from fastapi import APIRouter, Request
 from fastapi.responses import StreamingResponse
 
+from app.errors import convert_llm_error
 from app.schemas import ChatRequest, ChatResponse
 from app.services.llm_service import LLMService
-from app.errors import (LLMGatewayError, convert_llm_error)
 
 # 为了避免中文、换行或 JSON 特殊字符破坏 SSE 协议，事件数据统一编码为 JSON。
 # 第一，start、delta、done、error 是我们自己定义的业务协议。 它不是 OpenAI 内部的标准事件格式，而是 Java 与 Python 服务之间约定的统一接口。
@@ -25,7 +25,7 @@ def encode_sse(event: str, data: dict) -> str:
         ensure_ascii=False,
         separators=(",", ":")
     )
-    return f"event:{event}\ndata: {payload}\n\n"
+    return f"event: {event}\ndata: {payload}\n\n"
 
 @router.post("/chat", response_model=ChatResponse)
 async def chat(body: ChatRequest, request: Request):

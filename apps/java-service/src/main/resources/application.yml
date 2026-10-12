@@ -21,3 +21,10 @@ logging:
   level:
     root: INFO
     com.example.enterprisedatacopilot: DEBUG
+
+
+python:
+  agent:
+    base-url: ${PYTHON_AGENT_BASE_URL:http://127.0.0.1:8000}
+    connect-timeout-ms: 3000
+    response-timeout-seconds: 90

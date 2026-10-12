@@ -1,5 +1,6 @@
-from pydantic import BaseModel, Field
 from uuid import UUID
+
+from pydantic import BaseModel, Field
 
 
 # 定义请求和响应DTO
