@@ -6,6 +6,10 @@ from fastapi.responses import JSONResponse
 from app.rag3.api import install_rag_routes
 from app.rag3.runtime import rag_runtime
 
+"""
+创建 FastAPI 应用、安装路由和校验异常处理
+"""
+
 app = FastAPI(title="Enterprise Data Copilot - Week 3", lifespan=rag_runtime)
 install_rag_routes(app)
 

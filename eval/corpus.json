@@ -1,0 +1,406 @@
+[
+  {
+    "evidenceKey": "sales.net.v2",
+    "filename": "sales_net_v2.md",
+    "heading": "净销售额口径V2",
+    "content": "# 净销售额口径V2\n\n净销售额 = 已支付订单金额 - 已退款金额。取消订单和未支付订单不计入。该口径自2026年7月1日起生效，不提供实际经营金额。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "净销售额 = 已支付订单金额 - 已退款金额。取消订单和未支付订单不计入。该口径自2026年7月1日起生效，不提供实际经营金额。"
+  },
+  {
+    "evidenceKey": "sales.time",
+    "filename": "sales_time.md",
+    "heading": "销售额统计日期",
+    "content": "# 销售额统计日期\n\n销售额按 sales_orders.payment_time 支付完成日期统计，不使用 create_time 下单日期。退款按退款完成日归集。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "销售额按 sales_orders.payment_time 支付完成日期统计，不使用 create_time 下单日期。退款按退款完成日归集。"
+  },
+  {
+    "evidenceKey": "sales.zone",
+    "filename": "sales_zone.md",
+    "heading": "月度统计时区",
+    "content": "# 月度统计时区\n\n销售月报统一使用 Asia/Shanghai 时区。跨月支付归属于支付完成时间所在月份。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "销售月报统一使用 Asia/Shanghai 时区。跨月支付归属于支付完成时间所在月份。"
+  },
+  {
+    "evidenceKey": "sales.unit",
+    "filename": "sales_unit.md",
+    "heading": "金额字段单位",
+    "content": "# 金额字段单位\n\nsales_orders.payment_amount 与 sales_refunds.refund_amount 的单位均为人民币元，禁止未经换算按分展示。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "sales_orders.payment_amount 与 sales_refunds.refund_amount 的单位均为人民币元，禁止未经换算按分展示。"
+  },
+  {
+    "evidenceKey": "sales.count",
+    "filename": "sales_count.md",
+    "heading": "有效支付订单数",
+    "content": "# 有效支付订单数\n\n有效支付订单数是已支付且未完全退款的订单数量。部分退款订单仍计为一笔有效支付订单。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "有效支付订单数是已支付且未完全退款的订单数量。部分退款订单仍计为一笔有效支付订单。"
+  },
+  {
+    "evidenceKey": "sales.aov",
+    "filename": "sales_aov.md",
+    "heading": "客单价公式",
+    "content": "# 客单价公式\n\n客单价 = 净销售额 / 有效支付订单数。当有效支付订单数为零时，客单价返回空值，不返回无穷大。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "客单价 = 净销售额 / 有效支付订单数。当有效支付订单数为零时，客单价返回空值，不返回无穷大。"
+  },
+  {
+    "evidenceKey": "sales.conversion",
+    "filename": "sales_conversion.md",
+    "heading": "支付转化率",
+    "content": "# 支付转化率\n\n支付转化率 = 支付用户数 / 访问用户数。按用户ID去重，不使用支付订单数替代支付用户数。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "支付转化率 = 支付用户数 / 访问用户数。按用户ID去重，不使用支付订单数替代支付用户数。"
+  },
+  {
+    "evidenceKey": "sales.refund_rate",
+    "filename": "sales_refund_rate.md",
+    "heading": "退款率公式",
+    "content": "# 退款率公式\n\n退款率 = 发生退款的支付订单数 / 支付订单数。部分退款和全额退款的订单都计入分子。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "退款率 = 发生退款的支付订单数 / 支付订单数。部分退款和全额退款的订单都计入分子。"
+  },
+  {
+    "evidenceKey": "refund.types",
+    "filename": "refund_types.md",
+    "heading": "退款类型",
+    "content": "# 退款类型\n\n退款分为部分退款与全额退款。部分退款金额小于原支付金额，全额退款金额等于原支付金额。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "退款分为部分退款与全额退款。部分退款金额小于原支付金额，全额退款金额等于原支付金额。"
+  },
+  {
+    "evidenceKey": "refund.period",
+    "filename": "refund_period.md",
+    "heading": "退款归属月份",
+    "content": "# 退款归属月份\n\n退款按退款完成时间归集到所属月份，不回写原支付月份；这条规定只说明报表归属，不规定审批时限。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "退款按退款完成时间归集到所属月份，不回写原支付月份；这条规定只说明报表归属，不规定审批时限。"
+  },
+  {
+    "evidenceKey": "sales.gmv",
+    "filename": "sales_gmv.md",
+    "heading": "GMV口径",
+    "content": "# GMV口径\n\nGMV是成功提交订单的商品金额，包含未支付订单，但排除已取消订单。GMV与净销售额不同。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "GMV是成功提交订单的商品金额，包含未支付订单，但排除已取消订单。GMV与净销售额不同。"
+  },
+  {
+    "evidenceKey": "sales.freight",
+    "filename": "sales_freight.md",
+    "heading": "运费口径",
+    "content": "# 运费口径\n\n净销售额不包含运费。sales_orders.freight_amount 单独统计为运费收入，不能混入商品净销售额。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "净销售额不包含运费。sales_orders.freight_amount 单独统计为运费收入，不能混入商品净销售额。"
+  },
+  {
+    "evidenceKey": "inventory.available",
+    "filename": "inventory_available.md",
+    "heading": "可用库存公式",
+    "content": "# 可用库存公式\n\n可用库存 = 在库库存 - 已锁定库存。待入库数量不属于在库库存，不直接增加可用库存。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "可用库存 = 在库库存 - 已锁定库存。待入库数量不属于在库库存，不直接增加可用库存。"
+  },
+  {
+    "evidenceKey": "inventory.warning",
+    "filename": "inventory_warning.md",
+    "heading": "库存预警",
+    "content": "# 库存预警\n\n当可用库存小于安全库存时触发预警；等于安全库存时不触发。安全库存由SKU配置决定，未设置统一数量。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "当可用库存小于安全库存时触发预警；等于安全库存时不触发。安全库存由SKU配置决定，未设置统一数量。"
+  },
+  {
+    "evidenceKey": "wms.ship",
+    "filename": "wms_ship.md",
+    "heading": "发货完成状态",
+    "content": "# 发货完成状态\n\nWMS单据状态 SHIPPED 表示发货完成，PICKED 表示拣货完成。出库量统计使用发货完成记录。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "WMS单据状态 SHIPPED 表示发货完成，PICKED 表示拣货完成。出库量统计使用发货完成记录。"
+  },
+  {
+    "evidenceKey": "erp.status",
+    "filename": "erp_status.md",
+    "heading": "订单取消状态",
+    "content": "# 订单取消状态\n\nERP订单状态 CANCELLED 表示订单已取消，不能计入GMV或有效支付订单数。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "ERP订单状态 CANCELLED 表示订单已取消，不能计入GMV或有效支付订单数。"
+  },
+  {
+    "evidenceKey": "finance.cost",
+    "filename": "finance_cost.md",
+    "heading": "成本公式",
+    "content": "# 成本公式\n\n毛利额 = 净销售额 - 商品成本。商品成本字段为 finance_costs.goods_cost，计算口径是移动加权平均成本。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "finance"
+    ],
+    "classification": 2,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "毛利额 = 净销售额 - 商品成本。商品成本字段为 finance_costs.goods_cost，计算口径是移动加权平均成本。"
+  },
+  {
+    "evidenceKey": "finance.budget",
+    "filename": "finance_budget.md",
+    "heading": "预算制度",
+    "content": "# 预算制度\n\n虚构教学公司2026年研发预算上限为80万元；这是财务限制资料，仅finance角色可访问，不是现实企业数据。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "finance"
+    ],
+    "classification": 2,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "虚构教学公司2026年研发预算上限为80万元；这是财务限制资料，仅finance角色可访问，不是现实企业数据。"
+  },
+  {
+    "evidenceKey": "finance.bank",
+    "filename": "finance_bank.md",
+    "heading": "收款账户制度",
+    "content": "# 收款账户制度\n\n虚构教学收款账户尾号为6789，仅财务角色可查看；销售资料不得展示账户信息。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "finance"
+    ],
+    "classification": 2,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "虚构教学收款账户尾号为6789，仅财务角色可查看；销售资料不得展示账户信息。"
+  },
+  {
+    "evidenceKey": "finance.salary",
+    "filename": "finance_salary.md",
+    "heading": "薪酬资料",
+    "content": "# 薪酬资料\n\n虚构教学薪酬项目代码为SALARY_PRIVATE_26，属于财务机密资料，仅财务角色可查看。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "finance"
+    ],
+    "classification": 2,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "虚构教学薪酬项目代码为SALARY_PRIVATE_26，属于财务机密资料，仅财务角色可查看。"
+  },
+  {
+    "evidenceKey": "sales.net.v1",
+    "filename": "sales_net_v1.md",
+    "heading": "净销售额口径V1过期",
+    "content": "# 净销售额口径V1过期\n\n过期V1口径曾将净销售额等同已支付金额，不扣退款。2026年7月1日后停止使用，不能作为当前回答依据。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": false,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "过期V1口径曾将净销售额等同已支付金额，不扣退款。2026年7月1日后停止使用，不能作为当前回答依据。"
+  },
+  {
+    "evidenceKey": "tenantb.net",
+    "filename": "tenantb_net.md",
+    "heading": "B租户销售规则",
+    "content": "# B租户销售规则\n\n租户B的内部折扣代码为B_ONLY_725，当前文档仅租户B可访问。\n",
+    "tenantId": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+    "knowledgeBaseId": "22222222-2222-4222-8222-222222222222",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "租户B的内部折扣代码为B_ONLY_725，当前文档仅租户B可访问。"
+  },
+  {
+    "evidenceKey": "security.secret",
+    "filename": "security_secret.md",
+    "heading": "高密级预测",
+    "content": "# 高密级预测\n\n虚构教学高密级预测项目代号为SECRET_FALCON_99，安全等级3；普通销售和财务等级均不够。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 3,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "虚构教学高密级预测项目代号为SECRET_FALCON_99，安全等级3；普通销售和财务等级均不够。"
+  },
+  {
+    "evidenceKey": "sales.scope",
+    "filename": "sales_scope.md",
+    "heading": "资料范围",
+    "content": "# 资料范围\n\n本知识库定义指标与业务规则，没有任何真实企业每日、每月收入金额、客户个人信息或预测数据。\n",
+    "tenantId": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    "knowledgeBaseId": "11111111-1111-4111-8111-111111111111",
+    "roles": [
+      "sales",
+      "finance"
+    ],
+    "classification": 0,
+    "isCurrent": true,
+    "lineStart": 3,
+    "lineEnd": 3,
+    "quote": "本知识库定义指标与业务规则，没有任何真实企业每日、每月收入金额、客户个人信息或预测数据。"
+  }
+]

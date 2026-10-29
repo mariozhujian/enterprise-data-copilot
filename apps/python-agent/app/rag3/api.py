@@ -12,6 +12,7 @@ from app.rag3.errors import RagError
 from app.rag3.loader import MAX_FILE_BYTES
 from app.rag3.schemas import AskRequest, AskResponse, SearchRequest, SearchResponse, UploadResponse
 
+"""Controller + 部分异常处理器 | 接收上传、检索和问答请求，调用 Service"""
 # 接收请求并调用 Service
 router = APIRouter(prefix="/rag", tags=["RAG"])
 logger = logging.getLogger(__name__)

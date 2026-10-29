@@ -15,6 +15,9 @@ from app.errors import (
     validation_error_handler,
 )
 from app.services.llm_service import LLMService
+import asyncio
+import time
+
 
 
 @asynccontextmanager
@@ -53,3 +56,26 @@ app.include_router(router)
 @app.get("/health")
 async def health():
     return {"status": "UP"}
+
+@app.get("/info")
+async def info():
+    return {
+        "name": "Enterprise AI Agent",
+        "version": "1.0.0",
+        "language": "python",
+    }
+
+@app.get("/chat/demo")
+async def chat_demo():
+    print("1. 收到用户请求")
+    # 模拟调用大模型，等待 3 秒
+    await asyncio.sleep(3)
+    print("2. 大模型返回结果")
+    return {
+        "answer": "最近7天设备运行正常"
+    }
+
+@app.get("/chat/bad")
+async def chat_bad():
+    time.sleep(3)
+    return {"answer": "success"}
